@@ -1,4 +1,11 @@
 import React from "react";
+import { Link } from "@reach/router";
+
+import {
+	FaTrophy,
+	FaAward,
+	FaSearchPlus
+} from "react-icons/fa";
 
 class Dashboard extends React.Component
 {
@@ -6,103 +13,46 @@ class Dashboard extends React.Component
 	render()
 	{
 		return (
-			<div className="react-general">
-				<header>
-					<p>Devscale?!</p>
-					<nav>
-						<ul>
-							<li><a href="#">Link</a></li>
-							<li><a href="#">Link</a></li>
-							<li><a href="#">Link</a></li>
-							<li><a href="#">Link</a></li>
-							<li><a href="#">Link</a></li>
-						</ul>
-					</nav>
-				</header>
+			<section className="right">
 
-				<main>
-					<section className="left">
+				<img className="right-title-top" src="logo_for_dark1.png" alt="White Devscale"/>
+				<br/>
+				<img className="right-title" src="analyze_and_win.png" alt="Analyze and win"/>
+				<p className="right-title-bottom">More than 15,000 Hackathon projects analyzed to increase your chances of winning your next competition</p>
 
-						<section className="user-info">
-							<img className="user-img" src="huahua.jpg" alt="User's Profile"/>
-							<p className="username">Nathan Wilk</p>
-							<img className="country" src="usa_flag.png" alt="Country"/>
-						</section>
-
-						<section className="left-sidebar">
-
-							<p className="left-sidebar-title">Last Project Analysis</p>
-
-							<span className="separator"></span>
-
-							<div className="box">
-								<img className="box-img" src="mproj1.png" alt="Project"/>
-								<div className="box-gist">
-									<div className="box-additional">
-										<p className="box-title">My Swag Space</p>
-										<p className="box-time">9:45pm</p>
-									</div>
-									<p className="box-desc">Empowering Member Engagement in Hackathons and events with a social platform of digital swag.</p>
-								</div>
+				<section className="btns">
+					<Link to="/analysis" className="big-btn">
+						<div id="first" className="big-btn-content">
+							<FaTrophy className="icons"/>
+							<div className="btn-gist">
+								<p className="btn-title">Analyze</p>
+								<p className="description">Get insights into your project submission and see how close you're to winning.</p>
 							</div>
+						</div>
+					</Link>
 
-							<span className="separator"></span>
-
-							<div className="box">
-								<img className="box-img" src="mproj2.png" alt="Project"/>
-								<div className="box-gist">
-									<div className="box-additional">
-										<p className="box-title">Cinnamon Roll Dungeons</p>
-										<p className="box-time">12:01am</p>
-									</div>
-									<p className="box-desc">A game that promotes healthy eating by presenting
-									battles with unhealthy enemies based on a dice.</p>
-								</div>
+					<Link to="/nowhere" className="big-btn">
+						<div id="second" className="big-btn-content">
+							<FaAward className="icons"/>
+							<div className="btn-gist">
+								<p className="btn-title">Winner Statistics</p>
+								<p className="description">Explore common used words and expressions among Hackathon winners.</p>
 							</div>
+						</div>
+					</Link>
 
-							<span className="separator"></span>
-
-							<div className="box">
-								<img className="box-img" src="mproj3.png" alt="Project"/>
-								<div className="box-gist">
-									<div className="box-additional">
-										<p className="box-title">Sticker Chain</p>
-										<p className="box-time">10:05am</p>
-									</div>
-									<p className="box-desc">Blockchain-powered platform to collect hacking
-									stickers and badges with transactions in Hedera.</p>
-								</div>
+					<Link to="/nowwhere" className="big-btn">
+						<div id="third" className="big-btn-content">
+							<FaSearchPlus className="icons"/>
+							<div className="btn-gist">
+								<p className="btn-title">More</p>
+								<p className="description">Dive even further into your data. Let us show you.</p>
 							</div>
-						</section>
-					</section>
+						</div>
+					</Link>
+				</section>
 
-					<section className="right">
-
-						<a href="#" className="big-btn">
-							<div id="first" className="big-btn-content">
-								<p className="btn-title"></p>
-								<p className="description"></p>
-							</div>
-						</a>
-
-						<a href="#" className="big-btn">
-							<div id="second" className="big-btn-content">
-								<p className="btn-title"></p>
-								<p className="description"></p>
-							</div>
-						</a>
-
-						<a href="#" className="big-btn">
-							<div id="third" className="big-btn-content">
-								<p className="btn-title"></p>
-								<p className="description"></p>
-							</div>
-						</a>
-
-					</section>
-				</main>
-
-			</div>
+			</section>
 		)
 	}
 }
