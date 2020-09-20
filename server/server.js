@@ -73,16 +73,16 @@ app.post("/api/submit", (request, response) => {
 });
 
 // Endpoint used to retrieve results.
-app.get("/api/results", (request, response) => {
+app.get("/api/results", async (request, response) => {
 
-	const result = getPrediction(userText);
+	const result = await getPrediction(userText);
 
 	let obj = {
 		label: result[0],
-		score: result[1]
+		score: Math.floor(result[1]*100)+"%"
 	}
 
-	// The code below works...
+	//The code below works...
 	// const obj = {
 	// 	label: "thats the label",
 	// 	score: "thats the score"
