@@ -28,10 +28,10 @@ class App extends React.Component
 					<nav>
 						<ul>
 							<li><Link to="/"><FaHome className="nav-icons" />Home</Link></li>
-							<li><a href="#"><FaTrophy className="nav-icons" />Analyze</a></li>
-							<li><a href="#"><FaAward className="nav-icons" />Winner Statistics</a></li>
-							<li><a href="#"><FaSearchPlus className="nav-icons" />More</a></li>
-							<li><a href="#"><FaCat className="nav-icons" />About</a></li>
+							<li><a href="/nowhere"><FaTrophy className="nav-icons" />Analyze</a></li>
+							<li><a href="/nowhere"><FaAward className="nav-icons" />Winner Statistics</a></li>
+							<li><a href="/nowhere"><FaSearchPlus className="nav-icons" />More</a></li>
+							<li><a href="/nowhere"><FaCat className="nav-icons" />About</a></li>
 						</ul>
 					</nav>
 				</header>
