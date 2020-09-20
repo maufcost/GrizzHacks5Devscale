@@ -292,3 +292,9 @@ textarea {
 	background-color: #051336;
 	margin-top: -2px;
 }
+
+.results {
+	color: #fff;
+	opacity: 0.8;
+	text-align: center;
+}
