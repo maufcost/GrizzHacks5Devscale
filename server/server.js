@@ -17,7 +17,7 @@ app.use(cors());
 // because this app will NEVER be used by more than one person at the same time.
 let userText = "nothing yet";
 
-function getPrediction(text) {
+async function getPrediction(text) {
   // [START automl_language_text_classification_predict]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -51,10 +51,10 @@ function getPrediction(text) {
 
       return [annotationPayload.displayName, annotationPayload.classification.score ]
     }
-
   }
 
-  return predict();
+  const obj = await predict();
+  return obj;
   // [END automl_language_text_classification_predict]
 }
 
@@ -75,12 +75,18 @@ app.post("/api/submit", (request, response) => {
 // Endpoint used to retrieve results.
 app.get("/api/results", (request, response) => {
 
-	let result = getPrediction(userText);
+	const result = getPrediction(userText);
 
 	let obj = {
 		label: result[0],
 		score: result[1]
 	}
+
+	// The code below works...
+	// const obj = {
+	// 	label: "thats the label",
+	// 	score: "thats the score"
+	// }
 
 	response.send({ data: obj });
 

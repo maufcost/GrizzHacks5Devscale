@@ -298,3 +298,13 @@ textarea {
 	opacity: 0.8;
 	text-align: center;
 }
+
+.results-first {
+	font-size: 1.2em;
+}
+
+.results-second {
+	opacity: 1;
+	font-size: 4em;
+	font-weight: bold;
+}

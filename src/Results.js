@@ -11,8 +11,8 @@ class Results extends React.Component
 		super(props);
 
 		this.state = {
-			label: "No label yet",
-			score: "No score yet"
+			label: "You have the following chance of winning this hackathon:",
+			score: "75%"
 		};
 
 		this.callAPI = this.callAPI.bind(this);
@@ -42,8 +42,8 @@ class Results extends React.Component
 				<p className="right-title-bottom">Take advantage of the results below and tweak your project to increase your victory chances.</p>
 
 					<div className="results">
-						<p>{this.state.label}</p>
-						<p>{this.state.score}</p>
+						<p className="results-first">{this.state.label}</p>
+						<p className="results-second">{this.state.score}</p>
 					</div>
 			</section>
 		)
