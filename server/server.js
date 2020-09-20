@@ -3,6 +3,9 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+// Imports the Google Cloud AutoML library
+const { PredictionServiceClient } = require('@google-cloud/automl').v1;
+
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
@@ -13,8 +16,6 @@ app.use(cors());
 // That's a really bad API. We're storing the user's text on the server itself
 // because this app will NEVER be used by more than one person at the same time.
 let userText = "nothing yet";
-let label = "";
-let score = 0;
 
 function getPrediction(text) {
   // [START automl_language_text_classification_predict]
@@ -25,9 +26,6 @@ function getPrediction(text) {
   const location = 'us-central1';
   const modelId = 'TCN3312487685884477440';
   const content = text;
-
-  // Imports the Google Cloud AutoML library
-  const {PredictionServiceClient} = require('@google-cloud/automl').v1;
 
   // Instantiates a client
   const client = new PredictionServiceClient();
@@ -51,12 +49,12 @@ function getPrediction(text) {
       console.log(`Predicted class name: ${annotationPayload.displayName}`);
       console.log(`Predicted class score: ${annotationPayload.classification.score}`);
 
-      // return [annotationPayload.displayName, annotationPayload.classification.score ] RETURN THE BIGGEST ONE
+      return [annotationPayload.displayName, annotationPayload.classification.score ]
     }
 
   }
 
-  predict();
+  return predict();
   // [END automl_language_text_classification_predict]
 }
 
@@ -64,19 +62,27 @@ function getPrediction(text) {
 app.post("/api/submit", (request, response) => {
 
 	userText = request.body.userText;
-  let result = getPrediction(userText);
 
-  // label = result[0]
-  // score = result[1]
-	// response.send( { data: label + " : "+score} );
-  response.send( { "OOGABOOGA"} );
+  // The line below should NOT be changed. It's just for safe-keeping on the client.
+  // that I put this confirmation below. Nothing will read it and nothing should
+  // be sent from here.
+  //
+  // The results should be sent inside of .get().
+  response.send({ data: "POST request all good" })
 
 });
 
 // Endpoint used to retrieve results.
 app.get("/api/results", (request, response) => {
 
-	response.send({ data: label + " : "+score});
+	let result = getPrediction(userText);
+
+	let obj = {
+		label: result[0],
+		score: result[1]
+	}
+
+	response.send({ data: obj });
 
 });
 

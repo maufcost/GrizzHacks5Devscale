@@ -11,7 +11,8 @@ class Results extends React.Component
 		super(props);
 
 		this.state = {
-			response: "Nothing yet"
+			label: "No label yet",
+			score: "No score yet"
 		};
 
 		this.callAPI = this.callAPI.bind(this);
@@ -20,7 +21,7 @@ class Results extends React.Component
 	componentDidMount()
 	{
 		this.callAPI()
-			.then(res => this.setState({ response: res }))
+			.then(res => this.setState({ label: res.label, score: res.score }))
 			.catch(error => console.log(`Found the following error: ${error}`))
 	}
 
@@ -28,7 +29,8 @@ class Results extends React.Component
 	{
 		const response = await fetch("http://localhost:5000/api/results");
 		const responseJSON = await response.json();
-		return responseJSON.userText;
+		console.log(responseJSON.data);
+		return responseJSON.data;
 	}
 
 	render()
@@ -40,7 +42,8 @@ class Results extends React.Component
 				<p className="right-title-bottom">Take advantage of the results below and tweak your project to increase your victory chances.</p>
 
 					<div className="results">
-						{this.state.response}
+						<p>{this.state.label}</p>
+						<p>{this.state.score}</p>
 					</div>
 			</section>
 		)
